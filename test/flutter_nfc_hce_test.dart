@@ -7,7 +7,6 @@ import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 class MockFlutterNfcHcePlatform
     with MockPlatformInterfaceMixin
     implements FlutterNfcHcePlatform {
-
   @override
   Future<String?> getPlatformVersion() => Future.value('42');
 
@@ -24,7 +23,8 @@ class MockFlutterNfcHcePlatform
   }
 
   @override
-  Future<String?> startNfcHce(String content, String mimeType) {
+  Future<String?> startNfcHce(
+      String content, String mimeType, bool persistMessage) {
     // TODO: implement startNfcHce
     throw UnimplementedError();
   }

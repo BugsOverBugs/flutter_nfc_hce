@@ -1,3 +1,10 @@
+## 0.1.6
+
+* Refactor example app.
+* Add a default argument 'persistMessage' to the 'startNfcHce()' function.
+* Add deletion of file from internal storage to 'stopNfcHce'.
+* Formatted dart code with 'dart format .'.
+
 ## 0.1.5
 
 * Refactor the source code and function names.

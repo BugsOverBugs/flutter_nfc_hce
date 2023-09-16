@@ -1,6 +1,6 @@
 name: flutter_nfc_hce
-description: flutter_nfc_hce plugin project.
-version: 0.1.5
+description: flutter_nfc_hce provides the Android NFC host-card emulation API in Flutter.
+version: 0.1.6
 homepage: https://github.com/deokgyuhan/flutter_nfc_hce
 
 environment:

@@ -1,4 +1,4 @@
 <resources>
-    <string name="servicedesc">servicedesc</string>
+    <string name="servicedesc">flutter_nfc_hce example</string>
     <string name="aiddescription">aiddescription</string>
 </resources>

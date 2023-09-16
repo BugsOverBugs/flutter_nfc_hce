@@ -105,13 +105,13 @@ final _flutterNfcHcePlugin = FlutterNfcHce();
 var platformVersion = await _flutterNfcHcePlugin.getPlatformVersion();
 
 //isNfcHceSupported
-bool? isNfcHceSupported = await _flutterNfcHcePlugin.isNfcHceSupported();
+bool isNfcHceSupported = await _flutterNfcHcePlugin.isNfcHceSupported();
 
 //isSecureNfcEnabled
-bool? isSecureNfcEnabled = await _flutterNfcHcePlugin.isSecureNfcEnabled();
+bool isSecureNfcEnabled = await _flutterNfcHcePlugin.isSecureNfcEnabled();
 
 //isNfcEnabled 
-bool? isNfcEnabled = await _flutterNfcHcePlugin.isNfcEnabled();
+bool isNfcEnabled = await _flutterNfcHcePlugin.isNfcEnabled();
 
 //nfc content
 var content = 'flutter_nfc_hce';
@@ -126,7 +126,7 @@ await _flutterNfcHcePlugin.stopNfcHce();
 ## 6. Update history
 
 ### 2023.09.16 Update
-#### * Update Contributor: BugsOverBugs (https://github.com/BugsOverBugs) 
+#### * Update Contributor:[BugsOverBugs](https://github.com/BugsOverBugs) 
 
 1. Refactor the source code and function names.
 

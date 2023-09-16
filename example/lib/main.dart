@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_nfc_hce/flutter_nfc_hce.dart';
 
@@ -15,7 +16,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   final _flutterNfcHcePlugin = FlutterNfcHce();
   bool _showNFCScanDialog = false;
-  var platformVersion;
+  String? platformVersion;
   bool? isNfcHceSupported;
   bool? isSecureNfcEnabled;
   bool? isNfcEnabled;
@@ -33,7 +34,9 @@ class _MyAppState extends State<MyApp> {
     var content = 'flutter_nfc_hce';
     var result = await _flutterNfcHcePlugin.startNfcHce(content);
 
-    print('---------------------------------->${result!}');
+    if (kDebugMode) {
+      print('---------------------------------->$result');
+    }
 
     setState(() {
       _showNFCScanDialog = true;
@@ -51,57 +54,62 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-          home: Scaffold(
-          appBar: AppBar(
-            title: const Text('Plugin Nfc Hce example app'),
-          ),
-          body: Container(
-            child: Stack(
-              children: [
-                // Background widget
-                Container(
-                  color: Colors.transparent,
-                    child:  Center(
-                        child: Column(
-                          children: [
-                            Text('platformVersion: ${platformVersion == null ? "": platformVersion}'),
-                            SizedBox(height: 5,),
-                            Text('isSupportNfcHceFeature: ${isNfcHceSupported == null ? "" : isNfcHceSupported}'),
-                            SizedBox(height: 5,),
-                            Text('isSupportSecureNfcSupported: ${isSecureNfcEnabled == null ? "" : isSecureNfcEnabled}'),
-                            SizedBox(height: 5,),
-                            Text('isNfcEnagle: ${isNfcEnabled == null ? "" : isNfcEnabled}'),
-                          ],
-                        ))
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Plugin Nfc Hce example app'),
+        ),
+        body: Stack(
+          children: [
+            // Background widget
+            Center(
+              child: Column(children: [
+                const SizedBox(height: 5),
+                Text(
+                  'platformVersion: ${platformVersion ?? ""}',
                 ),
+                const SizedBox(height: 5),
+                Text(
+                  'isSupportNfcHceFeature: ${isNfcHceSupported ?? ""}',
+                ),
+                const SizedBox(height: 5),
+                Text(
+                  'isSupportSecureNfcSupported: ${isSecureNfcEnabled ?? ""}',
+                ),
+                const SizedBox(height: 5),
+                Text(
+                  'isNfcEnabled: ${isNfcEnabled ?? ""}',
+                ),
+              ]),
+            ),
 
-                // NFC Scan Dialog
-                if (_showNFCScanDialog)
-                  GestureDetector(
-                    onTap: _onCloseButtonPressed,
-                    child: Container(
-                      color: Colors.black54,
-                      alignment: Alignment.center,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image.asset('assets/nfc_tag.png', width: 100, height: 100),
-                          SizedBox(height: 16),
-                          Text(
-                            'Start Nfc Hce',
-                            style: TextStyle(color: Colors.white, fontSize: 18),
-                          ),
-                        ],
+            // NFC Scan Dialog
+            if (_showNFCScanDialog)
+              GestureDetector(
+                onTap: _onCloseButtonPressed,
+                child: Container(
+                  color: Colors.black54,
+                  alignment: Alignment.center,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset('assets/nfc_tag.png',
+                          width: 100, height: 100),
+                      const SizedBox(height: 16),
+                      const Text(
+                        'Start Nfc Hce',
+                        style: TextStyle(color: Colors.white, fontSize: 18),
                       ),
-                    ),
+                    ],
                   ),
-              ],
-            ),),
-          floatingActionButton: FloatingActionButton(
-            onPressed: _onScanButtonPressed,
-            child: Icon(Icons.nfc),
-          ),
-        )
+                ),
+              ),
+          ],
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: _onScanButtonPressed,
+          child: const Icon(Icons.nfc),
+        ),
+      ),
     );
   }
 }
